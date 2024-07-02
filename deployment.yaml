@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testing-app
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: testing-app
+  template:
+    metadata:
+      labels:
+        app: testing-app
+    spec:
+      containers:
+      - name: testing-app
+        image: 416591745024.dkr.ecr.eu-west-2.amazonaws.com/docker-repo/super-app
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
